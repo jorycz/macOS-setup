@@ -174,6 +174,11 @@ if [[ $1 =~ ^s ]]
   defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
   echo ""
 
+# Hidden files
+  echo " --- COPY HIDDEN FILES ---"
+  find . -type f -name '.*' -exec cp -v {} ~/ \;
+  echo ""
+
 # INFO: Application settings
 
   #echo "Safari - Prevent Safari from opening safe files automatically after downloading"
