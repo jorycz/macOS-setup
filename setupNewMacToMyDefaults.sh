@@ -16,6 +16,9 @@ if [[ $1 =~ ^s ]]
  then
   echo && echo "---- Setting my default Settings on new macOS ----" && echo
 
+  echo "Enter NAME of private repository folder or press Enter:"
+  read PREPO
+
 # INFO: Prerequisities
 
   echo "Quitting System Preferences if it's open ... "
@@ -178,6 +181,14 @@ if [[ $1 =~ ^s ]]
   echo " --- COPY HIDDEN FILES ---"
   find . -type f -name '.*' -exec cp -v {} ~/ \;
   echo ""
+
+  if [ -d "../${PREPO}/.git" ]
+  then
+    echo " --- PRIVATE REPO CONFIG ---"
+    cd "../${PREPO}/"
+    ./setupNewMacToMyDefaultsPrivate.sh
+    echo ""
+  fi
 
 # INFO: Application settings
 
