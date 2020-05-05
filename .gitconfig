@@ -1,0 +1,11 @@
+[http]
+#	proxy = http://IP:PORT
+#	sslverify = false
+[user]
+	name = Josef Rysanek
+	email = josef.rysanek@gmail.com
+[core]
+	excludesfile = /Users/jr/.gitignore_global
+[commit]
+#	template = /Users/jr/.stdCommitMsg
+
