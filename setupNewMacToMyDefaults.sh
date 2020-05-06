@@ -194,6 +194,8 @@ if [[ $1 =~ ^s ]]
 
   #echo "Safari - Prevent Safari from opening safe files automatically after downloading"
   #defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+  #echo "Safari - use Backspace key to navigate back to previous page"
+  #defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
 
   echo ""
   sleep 5
