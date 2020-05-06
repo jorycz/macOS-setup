@@ -22,6 +22,10 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 # Make scp user@machine:*test* . - wildcards work
 setopt nonomatch
 
+# Do NOT remove trailing slash when parsing folder name
+# e.g. keep name like Island/ and not Island. rsync then create new subfolder.
+setopt no_auto_remove_slash
+
 export PATH="${PATH}:/Users/${USER}/Documents/Scripts"
 
 #export LC_ALL="en_US.UTF-8"
