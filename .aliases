@@ -1,5 +1,5 @@
 alias grep='grep --color=auto'
-alias h='history | grep --color=auto'
+alias h='cat ~/.zsh_history | grep --color=auto'
 alias ls='ls -G'
 alias ll='ls -lG'
 alias la='ls -laG'
