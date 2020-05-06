@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # PREREQS - Install git: xcode-select --install
 
@@ -28,9 +28,9 @@ if [[ $1 =~ ^s ]]
   sudo ls &> /dev/null
 
   CU=$(whoami)
-  echo "User shell setup for user [ $CU ] - /bin/bash"
-  sudo chsh -s /bin/bash "${CU}"
-  # sudo chsh -s /bin/zsh "${CU}"
+  echo "User shell setup for user [ $CU ] - /bin/zsh"
+  #sudo chsh -s /bin/bash "${CU}"
+  sudo chsh -s /bin/zsh "${CU}"
 
   echo "Enter Computer Name: "
   read CNAME
