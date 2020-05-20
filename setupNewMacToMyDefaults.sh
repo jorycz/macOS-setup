@@ -141,10 +141,11 @@ if [[ $1 =~ ^s ]]
   defaults write com.apple.finder FXInfoPanesExpanded -dict-add "MetaData" -bool true
   defaults write com.apple.finder FXInfoPanesExpanded -dict-add "OpenWith" -bool true
   defaults write com.apple.finder FXInfoPanesExpanded -dict-add "Privileges" -bool true
-  #echo "Finder - Show item info near icons on the desktop and in other icon views"
+  #echo "Finder - Show item info near icons on the desktop"
   #/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-  #/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-  #/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+  echo "Finder - Show item info near icons in Finder icon views in windows"
+  /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+  /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
   echo "Finder - on Desktop - Sort by Name"
   /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
   echo "Terminal - Profile Pro - Font Name - SF Mono Light"
