@@ -83,7 +83,7 @@ if [[ $1 =~ ^s ]]
   echo "Keyboard - Use keyboard navigation to move focus between controls"
   defaults write -globalDomain AppleKeyboardUIMode -int 2
   echo "Keyboard - Input Sources - Automatically switch to a documents input source"
-  if /usr/libexec/PlistBuddy -c "Print :AppleGlobalTextInputProperties" /Users/jr/Library/Preferences//com.apple.HIToolbox.plist &> /dev/null
+  if /usr/libexec/PlistBuddy -c "Print :AppleGlobalTextInputProperties" ${HOME}/Library/Preferences//com.apple.HIToolbox.plist &> /dev/null
    then
     echo " ---> Record already found, setting."
     /usr/libexec/PlistBuddy -c "Set :AppleGlobalTextInputProperties:TextInputGlobalPropertyPerContextInput true" ~/Library/Preferences/com.apple.HIToolbox.plist
@@ -127,7 +127,7 @@ if [[ $1 =~ ^s ]]
   defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
   echo "Finder - New Finder windows show: Home folder"
   defaults write com.apple.finder NewWindowTarget -string "PfHm"
-  defaults write com.apple.finder NewWindowTargetPath -string ""file:///Users/jr/""
+  defaults write com.apple.finder NewWindowTargetPath -string ""file://${HOME}/""
   echo "Finder - Advanced - Show all filename extensions"
   defaults write -globalDomain AppleShowAllExtensions -bool true
   echo "Finder - Advanced - Search the Current Folder"
