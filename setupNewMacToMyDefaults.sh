@@ -16,7 +16,7 @@ if [[ $1 =~ ^s ]]
  then
   echo && echo "---- Setting my default Settings on new macOS ----" && echo
 
-  echo "Enter NAME of private repository folder or press Enter:"
+  echo "Enter NAME ( macOS-private ) of private repository folder or press Enter:"
   read PREPO
 
 # INFO: Prerequisities
