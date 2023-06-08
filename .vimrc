@@ -7,5 +7,6 @@ set hlsearch
 set ignorecase
 set smartcase
 set showmatch
+set autoindent expandtab tabstop=2 shiftwidth=2
 :highlight search guifg=yellow guibg=darkred
 
