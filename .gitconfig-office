@@ -1,6 +1,6 @@
 [http]
-#	proxy = http://px:3128
-#	sslverify = false
+	proxy = http://px:3128
+	sslverify = false
 [user]
 	name = Josef Rysanek
 	email = josef.rysanek@gmail.com
