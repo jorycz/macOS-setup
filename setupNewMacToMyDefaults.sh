@@ -154,6 +154,10 @@ if [[ $1 =~ ^s ]]
   osascript -e "tell application \"Terminal\" to set font size of settings set \"Pro\" to \"13\""
   echo "Terminal - Profile Pro - Shell - Close if shell exited cleanly"
   /usr/libexec/PlistBuddy -c "Set :'Window Settings':Pro:shellExitAction 1" ~/Library/Preferences/com.apple.Terminal.plist
+  echo "Terminal - Profile Pro - Shell - Do not set env. variables (LC_CTYPE) - issues on linux"
+  # -bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8)
+  # locale -a: locale: Cannot set LC_CTYPE to default locale: No such file or directory
+  /usr/libexec/PlistBuddy -c "Set :'Window Settings':Pro:SetLanguageEnvironmentVariables false" ~/Library/Preferences/com.apple.Terminal.plist
   echo "Terminal - set default and start to Pro"
   defaults write com.apple.Terminal "Startup Window Settings" -string Pro
   defaults write com.apple.Terminal "Default Window Settings" -string Pro
