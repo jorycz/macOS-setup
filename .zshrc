@@ -1,5 +1,5 @@
 source $HOME/.aliases
-source $HOME/.aliases_work
+if [ -f $HOME/.aliases_work ] ; then source $HOME/.aliases_work ; fi
 
 PROMPT='%F{039}%m%f %F{082}%~%f $ '
 
