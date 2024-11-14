@@ -16,13 +16,11 @@ if [[ $1 =~ ^s ]]
  then
   echo && echo "---- Setting my default Settings on new macOS ----" && echo
 
-  echo "Enter NAME ( macOS-private ) of private repository folder or press Enter:"
-  read PREPO
-
 # INFO: Prerequisities
 
   echo "Quitting System Preferences if it's open ... "
   osascript -e 'tell application "System Preferences" to quit'
+  sync
 
   echo "Some changes needs root't password."
   sudo ls &> /dev/null
@@ -39,7 +37,14 @@ if [[ $1 =~ ^s ]]
   sudo scutil --set LocalHostName "${CNAME}"
   sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "${CNAME}"
 
-  mkdir -p ~/.ssh ; chmod 700 ~/.ssh && chmod 600 ~/.ssh/* && chmod 644 ~/.ssh/*.pub
+  if mkdir -p ~/.ssh
+  then
+    chmod 700 ~/.ssh
+  else
+    chmod 600 ~/.ssh/*
+    chmod 644 ~/.ssh/*.pub
+  fi
+
   chown -R "${CU}" ~/.ssh
 
   echo "Install : Git / Command line tools" # Should be already installed
@@ -51,44 +56,44 @@ if [[ $1 =~ ^s ]]
   defaults write -globalDomain NSCloseAlwaysConfirmsChanges -bool true
   echo "General - Close windows when quitting an app"
   defaults write -globalDomain NSQuitAlwaysKeepsWindows -bool true
-  echo "Dock - Position on screen"
+  echo "Dock - Position on screen - right"
   defaults write com.apple.dock orientation -string "right"
   echo "Dock - Automatically hide and show the Dock"
   defaults write com.apple.dock autohide -bool true
-  echo "Dock - Show recent applications in Dock"
+  echo "Dock - DO NOT Show recent applications in Dock"
   defaults write com.apple.dock show-recents -bool false
   echo "Dock - Launchpad - bigger grid"
   # You can reset Launchpad: defaults write com.apple.dock ResetLaunchPad -bool true ; killall Dock
   defaults write com.apple.dock springboard-columns -int 9
   defaults write com.apple.dock springboard-rows -int 7
-  echo "Mission Control - Automatically rearrange Spaces based on most recet use"
+  echo "Mission Control - DO NOT Automatically rearrange Spaces based on most recet use"
   defaults write com.apple.dock mru-spaces -bool false
   echo "Mission Control - Group windows by application"
   defaults write com.apple.dock expose-group-apps -bool true
-  echo "Mission Control - Hot Corners - TOP Right - App Expose"
+  #echo "Mission Control - Hot Corners - TOP Right - App Expose"
   # Start Screen Saver = 5, Disable Screen Saver = 6, Mission Control = 2, Application Windows = 3
   # Desktop = 4, Dashboard = 7, Notification Center = 12, Launchpad = 11, Put Display to Sleep = 10
   # Modifier is always 0, with exception of "None":
   # None = 1 + Modifier = 1048576
-  defaults write com.apple.dock wvous-tr-corner -int 3
-  defaults write com.apple.dock wvous-tr-modifier -int 0
-  echo "Keyboard - Correct spelling automatically"
+  #defaults write com.apple.dock wvous-tr-corner -int 3
+  #defaults write com.apple.dock wvous-tr-modifier -int 0
+  echo "Keyboard - DO NOT Correct spelling automatically"
   defaults write -globalDomain WebAutomaticSpellingCorrectionEnabled -bool false
-  echo "Keyboard - Capitalise words automatically"
+  echo "Keyboard - DO NOT Capitalise words automatically"
   defaults write -globalDomain NSAutomaticCapitalizationEnabled -bool false
-  echo "Keyboard - Add full stop with double-space"
+  echo "Keyboard - DO NOT Add full stop with double-space"
   defaults write -globalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
-  echo "Keyboard - Use smart quotes and dashes"
+  echo "Keyboard - DO NOT Use smart quotes and dashes"
   defaults write -globalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
   echo "Keyboard - Use keyboard navigation to move focus between controls"
   defaults write -globalDomain AppleKeyboardUIMode -int 2
   echo "Keyboard - Input Sources - Automatically switch to a documents input source"
-  if /usr/libexec/PlistBuddy -c "Print :AppleGlobalTextInputProperties" ${HOME}/Library/Preferences//com.apple.HIToolbox.plist &> /dev/null
-   then
-    echo " ---> Record already found, setting."
+  if /usr/libexec/PlistBuddy -c "Print :AppleGlobalTextInputProperties" ~/Library/Preferences/com.apple.HIToolbox.plist
+  then
+    echo " ---> Key already found, setting."
     /usr/libexec/PlistBuddy -c "Set :AppleGlobalTextInputProperties:TextInputGlobalPropertyPerContextInput true" ~/Library/Preferences/com.apple.HIToolbox.plist
-   else
-    echo " ---> Record NOT found, adding."
+  else
+    echo " ---> Key NOT found, adding."
     /usr/libexec/PlistBuddy -c "Add :AppleGlobalTextInputProperties:TextInputGlobalPropertyPerContextInput bool true" ~/Library/Preferences/com.apple.HIToolbox.plist
   fi
   echo "Mouse - Point & Click - Secondary click / Two Buttons"
@@ -104,19 +109,15 @@ if [[ $1 =~ ^s ]]
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad.plist Clicking -bool true
   echo "Trackpad - More Gestures - Mission Control"
   defaults write com.apple.dock showMissionControlGestureEnabled -bool true
-  echo "Trackpad / Accessibility - Dragging"
+  echo "Trackpad / Accessibility - Tap & Drag"
   defaults write com.apple.AppleMultitouchTrackpad Dragging -bool true
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad.plist Dragging -bool true
   defaults write com.apple.AppleMultitouchTrackpad DragLock -bool false
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad.plist DragLock -bool false
-  echo "Energy Saver - AC Power - Enable Power Nap"
-  /usr/libexec/PlistBuddy -c "Set :'AC Power':DarkWakeBackgroundTasks true" /Library/Preferences/com.apple.PowerManagement.plist
   echo "Energy Saver - AC Power - Enable Prevent computer from sleeping automatically"
-  /usr/libexec/PlistBuddy -c "Set :'AC Power':'System Sleep Timer' 0" /Library/Preferences/com.apple.PowerManagement.plist
-  echo "Energy Saver - AC Power - Disable Put hard disk to sleep"
-  /usr/libexec/PlistBuddy -c "Set :'AC Power':'Disk Sleep Timer' 0" /Library/Preferences/com.apple.PowerManagement.plist
-  echo "Energy Saver - AC Power - Turn display off after 45 minutes"
-  /usr/libexec/PlistBuddy -c "Set :'AC Power':'Display Sleep Timer' 45" /Library/Preferences/com.apple.PowerManagement.plist
+  sudo pmset -a sleep 0
+  echo "Energy Saver - AC Power - Turn display off after 1 hour"
+  sudo pmset -a displaysleep 60
   echo "Finder - Show Path bar"
   defaults write com.apple.finder ShowPathbar -bool true
   echo "Finder - Show Status bar"
@@ -154,11 +155,15 @@ if [[ $1 =~ ^s ]]
   osascript -e "tell application \"Terminal\" to set font size of settings set \"Pro\" to \"13\""
   echo "Terminal - Profile Pro - Shell - Close if shell exited cleanly"
   /usr/libexec/PlistBuddy -c "Set :'Window Settings':Pro:shellExitAction 1" ~/Library/Preferences/com.apple.Terminal.plist
-  echo "Terminal - Profile Pro - Shell - Do not set env. variables (LC_CTYPE) - issues on linux"
+  echo "Terminal - Profile Pro - Shell - DO NOT set env. variables (LC_CTYPE) - issues on linux"
   # -bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8)
   # locale -a: locale: Cannot set LC_CTYPE to default locale: No such file or directory
-  /usr/libexec/PlistBuddy -c "Set :'Window Settings':Pro:SetLanguageEnvironmentVariables false" ~/Library/Preferences/com.apple.Terminal.plist
-  echo "Terminal - set default and start to Pro"
+  if ! /usr/libexec/PlistBuddy -c "Set :'Window Settings':Pro:SetLanguageEnvironmentVariables false" ~/Library/Preferences/com.apple.Terminal.plist
+  then
+    echo " ---> Key NOT found, adding."
+    /usr/libexec/PlistBuddy -c "Add :'Window Settings':Pro:SetLanguageEnvironmentVariables bool false" ~/Library/Preferences/com.apple.Terminal.plist
+  fi
+  echo "Terminal - set default and start window to profile - Pro"
   defaults write com.apple.Terminal "Startup Window Settings" -string Pro
   defaults write com.apple.Terminal "Default Window Settings" -string Pro
   echo "Terminal - Enable Secure Keyboard Entry in Terminal.app"
@@ -170,7 +175,7 @@ if [[ $1 =~ ^s ]]
   sudo defaults write /Library/Preferences/com.apple.loginwindow MultipleSessionEnabled -bool true
   echo "Users & Groups - Enable fast user switching as Account Name"
   defaults write ~/Library/Preferences/.GlobalPreferences userMenuExtraStyle -int 1
-  echo "Do not create .DS_Store files on network or USB volume"
+  echo "DO NOT create .DS_Store files on network or USB volume"
   defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
   defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
   echo "Finder - Show the ~/Library folder"
@@ -187,10 +192,10 @@ if [[ $1 =~ ^s ]]
   find . -type f -name '.*' -exec cp -v {} ~/ \;
   echo ""
 
-  if [ -d "../${PREPO}/.git" ]
+  if [ -d "../macOS-private/" ]
   then
     echo " --- PRIVATE REPO CONFIG ---"
-    cd "../${PREPO}/"
+    cd "../macOS-private/"
     ./setupNewMacToMyDefaultsPrivate.sh
     echo ""
   fi
@@ -206,9 +211,13 @@ if [[ $1 =~ ^s ]]
   sleep 5
   sync
   sleep 5
-  echo "###"
-  echo " ### Exit this Terminal session, quit apps & Reboot ###"
-  echo "###"
+  echo "###############################################"
+  echo "###############################################"
+  echo
+  echo " !!! QUIT Terminal, QUIT apps & Reboot NOW !!!"
+  echo
+  echo "###############################################"
+  echo "###############################################"
   echo ""
 fi
 
