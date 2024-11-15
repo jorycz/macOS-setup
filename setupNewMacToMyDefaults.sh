@@ -188,13 +188,13 @@ if [[ $1 =~ ^s ]]
   echo ""
 
 # Hidden files
-  echo " --- COPY HIDDEN FILES ---"
+  echo "--- COPY HIDDEN FILES ---" && echo
   find . -type f -name '.*' -exec cp -v {} ~/ \;
   echo ""
 
   if [ -d "../macOS-private/" ]
   then
-    echo " --- PRIVATE REPO CONFIG ---"
+    echo "--- PRIVATE REPO CONFIG ---" && echo
     cd "../macOS-private/"
     ./setupNewMacToMyDefaultsPrivate.sh
     echo ""
