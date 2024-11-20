@@ -1,20 +1,63 @@
 #!/bin/zsh
 
-osascript ./disableSecureKeyboardEntry.scpt
-
-if ! ./setupUsingGUI.sh s
-then
-  echo ; echo "Fix errors and RUN again." ; echo
+show_error() {
+  echo
+  echo "Fix errors and RUN again."
+  echo "Allow rights in 'System Settings > Privacy & Security > Accessibility' ... ?"
+  echo
   exit 1
-fi
+}
 
-sleep 1
-
-if ! ./setupUsingTerminal.sh s
+if [[ $1 =~ ^g ]]
 then
-  echo ; echo "Fix errors and RUN again." ; echo
-  exit 1
-fi
 
-osascript ./enableSecureKeyboardEntry.scpt
+  echo ""
+  echo " --- Initial setup. Some changes needs root't password ..."
+  CU=$(whoami)
+  echo "Setting shell for user [ $CU ] - /bin/zsh"
+  #sudo chsh -s /bin/bash "${CU}"
+  sudo chsh -s /bin/zsh "${CU}"
+  echo ; echo "Enter Computer Name or hit ENTER to keep current [ $(hostname -s) ] : "
+  read CNAME
+  if [ ! -z "${CNAME}" ]
+  then
+    echo "Setting to : [ ${CNAME} ]"
+    sudo scutil --set ComputerName "${CNAME}"
+    sudo scutil --set HostName "${CNAME}"
+    sudo scutil --set LocalHostName "${CNAME}"
+    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "${CNAME}"
+  else
+    echo "Leaving [ $(hostname -s) ]"
+  fi
+  
+  echo "Enabling Firewall ..."
+  sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
+  echo
+  
+  ### I'm using Secure Keyboard Entry when working in Terminal.
+  ### This must be disabled, otherwise Terminal will not change focus when running Apple Script.
+  if ! osascript ./disableSecureKeyboardEntry.scpt ; then show_error ; fi
+  if ! ./setupUsingGUI.sh s ; then show_error ; fi
+  sleep 1
+  if ! ./setupUsingTerminal.sh s ; then show_error ; fi
+  osascript ./enableSecureKeyboardEntry.scpt
+
+else
+  
+  echo "*********************************************************"
+  echo ""
+  echo " Set 'Language & Region' --> 'Preferred Languages' to:"
+  echo ""
+  echo "     primary Language: 'English (US)'"
+  echo "     another Language: 'Czech'"
+  echo ""
+  echo "    (Your Mac may need to reboot ...)"
+  echo ""
+  echo " Then run this script with go: $0 go"
+  echo ""
+  echo "*********************************************************"
+
+  open /System/Library/PreferencePanes/Localization.prefPane
+
+fi
 
