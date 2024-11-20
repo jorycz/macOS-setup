@@ -1,5 +1,5 @@
 * git clone https://github.com/jorycz/macOS-setup.git
-* Clone private repository.
+* Clone private repository (only for me - not needed) for setup.
 
 ```
 cd macOS-setup
