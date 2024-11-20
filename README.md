@@ -1,8 +1,8 @@
 * git clone https://github.com/jorycz/macOS-setup.git
-* git clone privateRepo
+* Clone private repository.
 
 ```
 cd macOS-setup
-./setupNewMacToMyDefaults.sh
+./newMacCompleteSetup.sh
 ```
 
