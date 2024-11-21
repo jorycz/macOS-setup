@@ -6,5 +6,5 @@ cd macOS-setup
 ./newMacCompleteSetup.sh
 ```
 
-* See it in action on YouTube https://www.youtube.com/watch?v=WS9oynAzLd0
+* See it in action on YouTube https://youtu.be/1Gs5NAhzs3M
 
