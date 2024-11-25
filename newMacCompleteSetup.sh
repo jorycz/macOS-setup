@@ -33,6 +33,10 @@ then
   echo "Enabling Firewall ..."
   sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
   echo
+
+  echo "If you want to Apple Scripts automatically paste you password to password dialogs, store your password to clipboard now."
+  echo "HIT Enter to continue ..."
+  read
   
   ### I'm using Secure Keyboard Entry when working in Terminal.
   ### This must be disabled, otherwise Terminal will not change focus when running Apple Script.
