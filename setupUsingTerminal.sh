@@ -124,11 +124,10 @@ if [[ $1 =~ ^s ]]
   #echo "Finder - on Desktop - Sort by Name"
   #/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
 
-  echo "Terminal - Profile Pro - Font Name - SF Mono Light"
-  osascript -e "tell application \"Terminal\" to set font name of settings set \"Pro\" to \"SF Mono Light\""
-  echo "Terminal - Profile Pro - Font Size - 13"
-  osascript -e "tell application \"Terminal\" to set font size of settings set \"Pro\" to \"13\""
-
+  #echo "Terminal - Profile Pro - Font Name - SF Mono Light"
+  #osascript -e "tell application \"Terminal\" to set font name of settings set \"Pro\" to \"SF Mono Light\""
+  #echo "Terminal - Profile Pro - Font Size - 13"
+  #osascript -e "tell application \"Terminal\" to set font size of settings set \"Pro\" to \"13\""
   #echo "Terminal - Profile Pro - Shell - DO NOT set env. variables (LC_CTYPE) - issues on linux"
   ### -bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8)
   ### locale -a: locale: Cannot set LC_CTYPE to default locale: No such file or directory
