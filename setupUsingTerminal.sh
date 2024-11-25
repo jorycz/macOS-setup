@@ -31,10 +31,10 @@ if [[ $1 =~ ^s ]]
 
   ### macOS system settings
 
-  echo "General - Ask to keep change when closing documents"
-  defaults write -globalDomain NSCloseAlwaysConfirmsChanges -bool true
-  echo "General - Close windows when quitting an app"
-  defaults write -globalDomain NSQuitAlwaysKeepsWindows -bool true
+  #echo "General - Ask to keep change when closing documents"
+  #defaults write -globalDomain NSCloseAlwaysConfirmsChanges -bool true
+  #echo "General - Close windows when quitting an app"
+  #defaults write -globalDomain NSQuitAlwaysKeepsWindows -bool true
 
   echo "Dock - Position on screen - right"
   defaults write com.apple.dock orientation -string "right"
