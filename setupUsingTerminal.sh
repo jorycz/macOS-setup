@@ -91,12 +91,12 @@ if [[ $1 =~ ^s ]]
   defaults write com.apple.AppleMultitouchTrackpad DragLock -bool false
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad.plist DragLock -bool false
 
-  echo "Finder - Show Path bar"
-  defaults write com.apple.finder ShowPathbar -bool true
-  echo "Finder - Show Status bar"
-  defaults write com.apple.finder ShowStatusBar -bool true
-  echo "Finder - Advanced - Show all filename extensions"
-  defaults write -globalDomain AppleShowAllExtensions -bool true
+  #echo "Finder - Show Path bar"
+  #defaults write com.apple.finder ShowPathbar -bool true
+  #echo "Finder - Show Status bar"
+  #defaults write com.apple.finder ShowStatusBar -bool true
+  #echo "Finder - Advanced - Show all filename extensions"
+  #defaults write -globalDomain AppleShowAllExtensions -bool true
   echo "Finder - Allowing text selection in Quick Look/Preview in Finder by default"
   defaults write com.apple.finder QLEnableTextSelection -bool true
   echo "Finder - Expand the following File Info panes: General, Metadata, Open with, and Sharing & Permissions"
