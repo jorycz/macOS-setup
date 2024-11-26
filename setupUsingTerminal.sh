@@ -36,21 +36,22 @@ if [[ $1 =~ ^s ]]
   #echo "General - Close windows when quitting an app"
   #defaults write -globalDomain NSQuitAlwaysKeepsWindows -bool true
 
-  echo "Dock - Position on screen - right"
-  defaults write com.apple.dock orientation -string "right"
-  echo "Dock - Automatically hide and show the Dock"
-  defaults write com.apple.dock autohide -bool true
-  echo "Dock - DO NOT Show recent applications in Dock"
-  defaults write com.apple.dock show-recents -bool false
+  #echo "Dock - Position on screen - right"
+  #defaults write com.apple.dock orientation -string "right"
+  #echo "Dock - Automatically hide and show the Dock"
+  #defaults write com.apple.dock autohide -bool true
+  #echo "Dock - DO NOT Show recent applications in Dock"
+  #defaults write com.apple.dock show-recents -bool false
+
   echo "Dock - Launchpad - bigger grid"
   ### You can reset Launchpad: defaults write com.apple.dock ResetLaunchPad -bool true ; killall Dock
   defaults write com.apple.dock springboard-columns -int 9
   defaults write com.apple.dock springboard-rows -int 7
 
-  echo "Mission Control - DO NOT Automatically rearrange Spaces based on most recet use"
-  defaults write com.apple.dock mru-spaces -bool false
-  echo "Mission Control - Group windows by application"
-  defaults write com.apple.dock expose-group-apps -bool true
+  #echo "Mission Control - DO NOT Automatically rearrange Spaces based on most recet use"
+  #defaults write com.apple.dock mru-spaces -bool false
+  #echo "Mission Control - Group windows by application"
+  #defaults write com.apple.dock expose-group-apps -bool true
   #echo "Mission Control - Hot Corners - TOP Right - App Expose"
   ### Start Screen Saver = 5, Disable Screen Saver = 6, Mission Control = 2, Application Windows = 3
   ### Desktop = 4, Dashboard = 7, Notification Center = 12, Launchpad = 11, Put Display to Sleep = 10
