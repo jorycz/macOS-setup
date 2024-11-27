@@ -1,6 +1,0 @@
-alias grep='grep --color=auto'
-alias h='history -E 0 | grep --color=auto'
-alias ls='ls -G'
-alias ll='ls -lG'
-alias la='ls -laG'
-

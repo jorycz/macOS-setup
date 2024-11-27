@@ -40,11 +40,14 @@ then
   
   ### I'm using Secure Keyboard Entry when working in Terminal.
   ### This must be disabled, otherwise Terminal will not change focus when running Apple Script.
-  if ! osascript ./disableSecureKeyboardEntry.scpt ; then show_error ; fi
-  if ! ./setupUsingGUI.sh s ; then show_error ; fi
+  if ! osascript ./SecureKeyboardEntry/disableSecureKeyboardEntry.scpt ; then show_error ; fi
+
+  if ! ./InitialSetup/setupUsingGUI.sh s ; then show_error ; fi
+
   sleep 1
-  if ! ./setupUsingTerminal.sh s ; then show_error ; fi
-  osascript ./enableSecureKeyboardEntry.scpt
+  if ! ./InitialSetup/setupUsingTerminal.sh s ; then show_error ; fi
+
+  osascript ./SecureKeyboardEntry/enableSecureKeyboardEntry.scpt
 
 else
   

@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+### Not active lines are moved to GUI setting method using Apple Script.
+
 ### PREREQS - Install git: xcode-select --install
 
 ### Should be already installed
@@ -9,10 +11,8 @@
 ### Setup my settings ###
 
 if [[ $1 =~ ^s ]]
- then
+then
   echo && echo "---- Setting macOS in Terminal ... ----" && echo
-
-### Prerequisities
 
   echo "Quitting System Preferences if it's open ... "
   osascript -e 'tell application "System Preferences" to quit'
@@ -20,15 +20,9 @@ if [[ $1 =~ ^s ]]
   echo
   sleep 1
 
-  if mkdir -p ~/.ssh
-  then
-    chmod 700 ~/.ssh
-  else
-    chmod 600 ~/.ssh/*
-    chmod 644 ~/.ssh/*.pub
-  fi
-
-  ### macOS system settings
+  ##############################
+  ### macOS system settings ####
+  ##############################
 
   #echo "General - Ask to keep change when closing documents"
   #defaults write -globalDomain NSCloseAlwaysConfirmsChanges -bool true
@@ -64,26 +58,6 @@ if [[ $1 =~ ^s ]]
   #defaults write -globalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
   #echo "Keyboard - Use keyboard navigation to move focus between controls"
   #defaults write -globalDomain AppleKeyboardUIMode -int 2
-
-  echo "Mouse - Point & Click - Secondary click / Two Buttons"
-  defaults write com.apple.AppleMultitouchMouse MouseButtonMode -string "TwoButton"
-  echo "Mouse - Point & Click - Smart zoom"
-  defaults write com.apple.AppleMultitouchMouse MouseOneFingerDoubleTapGesture -int 1
-  echo "Mouse - Point & Click - Swipes ..."
-  defaults write com.apple.AppleMultitouchMouse MouseTwoFingerHorizSwipeGesture -int 2
-  echo "Mouse - Point & Click - Mission control"
-  defaults write com.apple.AppleMultitouchMouse MouseTwoFingerDoubleTapGesture -int 3
-
-  echo "Trackpad - Tap To Click"
-  defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
-  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad.plist Clicking -bool true
-  echo "Trackpad - More Gestures - Mission Control"
-  defaults write com.apple.dock showMissionControlGestureEnabled -bool true
-  echo "Trackpad / Accessibility - Tap & Drag"
-  defaults write com.apple.AppleMultitouchTrackpad Dragging -bool true
-  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad.plist Dragging -bool true
-  defaults write com.apple.AppleMultitouchTrackpad DragLock -bool false
-  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad.plist DragLock -bool false
 
   #echo "Finder - Show Path bar"
   #defaults write com.apple.finder ShowPathbar -bool true
@@ -148,7 +122,29 @@ if [[ $1 =~ ^s ]]
   #echo "Users & Groups - Enable fast user switching as Account Name"
   #defaults write ~/Library/Preferences/.GlobalPreferences userMenuExtraStyle -int 1
 
+  echo "Mouse - Point & Click - Secondary click / Two Buttons"
+  defaults write com.apple.AppleMultitouchMouse MouseButtonMode -string "TwoButton"
+  echo "Mouse - Point & Click - Smart zoom"
+  defaults write com.apple.AppleMultitouchMouse MouseOneFingerDoubleTapGesture -int 1
+  echo "Mouse - Point & Click - Swipes ..."
+  defaults write com.apple.AppleMultitouchMouse MouseTwoFingerHorizSwipeGesture -int 2
+  echo "Mouse - Point & Click - Mission control"
+  defaults write com.apple.AppleMultitouchMouse MouseTwoFingerDoubleTapGesture -int 3
+
+  echo "Trackpad - Tap To Click"
+  defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad.plist Clicking -bool true
+  echo "Trackpad - More Gestures - Mission Control"
+  defaults write com.apple.dock showMissionControlGestureEnabled -bool true
+  echo "Trackpad / Accessibility - Tap & Drag"
+  defaults write com.apple.AppleMultitouchTrackpad Dragging -bool true
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad.plist Dragging -bool true
+  defaults write com.apple.AppleMultitouchTrackpad DragLock -bool false
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad.plist DragLock -bool false
+
+  ##############################
   ###### Non-GUI Settings ######
+  ##############################
 
   echo "Finder - Allowing text selection in Quick Look/Preview in Finder by default"
   defaults write com.apple.finder QLEnableTextSelection -bool true
@@ -163,46 +159,48 @@ if [[ $1 =~ ^s ]]
   defaults write com.apple.dock springboard-columns -int 9
   defaults write com.apple.dock springboard-rows -int 7
 
-  echo "Expand Save dialogs"
+  ##############################
+  #### Application settings ####
+  ##############################
+
+  echo "TextEdit - Use plain text mode for new TextEdit documents"
+  defaults write com.apple.TextEdit RichText -int 0
+  echo "TextEdit - Open and save files as UTF-8 in TextEdit"
+  defaults write com.apple.TextEdit PlainTextEncoding -int 4
+  defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+  echo "TextEdit - Set default plain text font and size"
+  defaults write com.apple.TextEdit NSFixedPitchFont -string "Verdana"
+  defaults write com.apple.TextEdit NSFixedPitchFontSize -int 14
+  echo "TextEdit - Set default rich text font and size"
+  defaults write com.apple.TextEdit NSFont -string "Verdana"
+  defaults write com.apple.TextEdit NSFontSize -int 14
+
+  echo "Global - Expand Save dialogs"
   defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
   defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
-  echo "Do NOT create .DS_Store files on Network or USB volumes"
+  echo "Global - Do NOT create .DS_Store files on Network or USB volumes"
   defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
   defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
-
-  ### Application settings
-
-  #echo "Safari - Prevent Safari from opening safe files automatically after downloading"
-  #defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
-  #echo "Safari - use Backspace key to navigate back to previous page"
-  #defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
-
-  echo "Use plain text mode for new TextEdit documents"
-  defaults write com.apple.TextEdit RichText -int 0
-  echo "Open and save files as UTF-8 in TextEdit"
-  defaults write com.apple.TextEdit PlainTextEncoding -int 4
-  defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
-
+ 
   echo ""
 
-  ### Hidden files
-  echo "--- COPY HIDDEN FILES ---" && echo
-  find . -type f -name '.*' -exec cp -v {} ~/ \;
-  echo ""
+  ##############################
+  ###### Private Settings ######
+  ##############################
 
   if [ -d "../macOS-private/" ]
   then
-    echo "--- PRIVATE REPOSITORY DETECTED ---" && echo
+    echo "---- PRIVATE REPOSITORY FOUND ----" && echo
     cd "../macOS-private/"
-    ./setupNewMacToMyDefaultsPrivate.sh
+    ./privateInitialSetup.sh
     echo ""
   fi
 
   echo ""
-  sleep 3
   sync
   sleep 3
+
   echo "##############################################"
   echo "##############################################"
   echo
