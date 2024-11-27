@@ -2,7 +2,9 @@
 
 ### PREREQS - Install git: xcode-select --install
 
-if [ -f /usr/libexec/PlistBuddy ] ; then echo "PlistBuddy found." ; else echo "Install /usr/libexec/PlistBuddy" ; exit 1 ; fi
+### Should be already installed
+#if [ -f /usr/libexec/PlistBuddy ] ; then echo "PlistBuddy found." ; else echo "Install /usr/libexec/PlistBuddy" ; exit 1 ; fi
+#xcode-select --install &> /dev/null
 
 ### Setup my settings ###
 
@@ -26,9 +28,6 @@ if [[ $1 =~ ^s ]]
     chmod 644 ~/.ssh/*.pub
   fi
 
-  ### Should be already installed
-  xcode-select --install &> /dev/null
-
   ### macOS system settings
 
   #echo "General - Ask to keep change when closing documents"
@@ -42,11 +41,6 @@ if [[ $1 =~ ^s ]]
   #defaults write com.apple.dock autohide -bool true
   #echo "Dock - DO NOT Show recent applications in Dock"
   #defaults write com.apple.dock show-recents -bool false
-
-  echo "Dock - Launchpad - bigger grid"
-  ### You can reset Launchpad: defaults write com.apple.dock ResetLaunchPad -bool true ; killall Dock
-  defaults write com.apple.dock springboard-columns -int 9
-  defaults write com.apple.dock springboard-rows -int 7
 
   #echo "Mission Control - DO NOT Automatically rearrange Spaces based on most recet use"
   #defaults write com.apple.dock mru-spaces -bool false
@@ -97,18 +91,6 @@ if [[ $1 =~ ^s ]]
   #defaults write com.apple.finder ShowStatusBar -bool true
   #echo "Finder - Advanced - Show all filename extensions"
   #defaults write -globalDomain AppleShowAllExtensions -bool true
-  echo "Finder - Allowing text selection in Quick Look/Preview in Finder by default"
-  defaults write com.apple.finder QLEnableTextSelection -bool true
-  echo "Finder - Expand the following File Info panes: General, Metadata, Open with, and Sharing & Permissions"
-  defaults write com.apple.finder FXInfoPanesExpanded -dict-add "General" -bool true
-  defaults write com.apple.finder FXInfoPanesExpanded -dict-add "MetaData" -bool true
-  defaults write com.apple.finder FXInfoPanesExpanded -dict-add "OpenWith" -bool true
-  defaults write com.apple.finder FXInfoPanesExpanded -dict-add "Privileges" -bool true
-  echo "Finder - Show item info near icons in Finder icon views in windows"
-  /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-  /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-  echo "Finder - Show the ~/Library folder"
-  chflags nohidden ~/Library
   #echo "Finder - Hard disks - on Desktop"
   #defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
   #echo "Finder - Connected servers - on Desktop"
@@ -124,6 +106,11 @@ if [[ $1 =~ ^s ]]
   #/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
   #echo "Finder - on Desktop - Sort by Name"
   #/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
+  #echo "Finder - Show item info near icons in Finder icon views in windows"
+  #/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+  #/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+  #echo "Finder - Show the ~/Library folder"
+  #chflags nohidden ~/Library
 
   #echo "Terminal - Profile Pro - Font Name - SF Mono Light"
   #osascript -e "tell application \"Terminal\" to set font name of settings set \"Pro\" to \"SF Mono Light\""
@@ -161,14 +148,42 @@ if [[ $1 =~ ^s ]]
   #echo "Users & Groups - Enable fast user switching as Account Name"
   #defaults write ~/Library/Preferences/.GlobalPreferences userMenuExtraStyle -int 1
 
-  echo "DO NOT create .DS_Store files on network or USB volume"
+  ###### Non-GUI Settings ######
+
+  echo "Finder - Allowing text selection in Quick Look/Preview in Finder by default"
+  defaults write com.apple.finder QLEnableTextSelection -bool true
+  echo "Finder - Expand the following File Info panes: General, Metadata, Open with, and Sharing & Permissions"
+  defaults write com.apple.finder FXInfoPanesExpanded -dict-add "General" -bool true
+  defaults write com.apple.finder FXInfoPanesExpanded -dict-add "MetaData" -bool true
+  defaults write com.apple.finder FXInfoPanesExpanded -dict-add "OpenWith" -bool true
+  defaults write com.apple.finder FXInfoPanesExpanded -dict-add "Privileges" -bool true
+
+  echo "Dock - Launchpad - more space in grid"
+  ### You can reset Launchpad: defaults write com.apple.dock ResetLaunchPad -bool true ; killall Dock
+  defaults write com.apple.dock springboard-columns -int 9
+  defaults write com.apple.dock springboard-rows -int 7
+
+  echo "Expand Save dialogs"
+  defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+  defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+  echo "Do NOT create .DS_Store files on Network or USB volumes"
   defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
   defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+  ### Application settings
+
+  #echo "Safari - Prevent Safari from opening safe files automatically after downloading"
+  #defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+  #echo "Safari - use Backspace key to navigate back to previous page"
+  #defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
+
   echo "Use plain text mode for new TextEdit documents"
   defaults write com.apple.TextEdit RichText -int 0
   echo "Open and save files as UTF-8 in TextEdit"
   defaults write com.apple.TextEdit PlainTextEncoding -int 4
   defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
   echo ""
 
   ### Hidden files
@@ -184,17 +199,10 @@ if [[ $1 =~ ^s ]]
     echo ""
   fi
 
-  ### Application settings
-
-  #echo "Safari - Prevent Safari from opening safe files automatically after downloading"
-  #defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
-  #echo "Safari - use Backspace key to navigate back to previous page"
-  #defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
-
   echo ""
-  sleep 5
+  sleep 3
   sync
-  sleep 5
+  sleep 3
   echo "##############################################"
   echo "##############################################"
   echo
