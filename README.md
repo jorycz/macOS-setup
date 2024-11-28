@@ -1,4 +1,4 @@
-# macOS-setup
+# macOS setup
 
 * git clone https://github.com/jorycz/macOS-setup.git
 * Clone private repository (note only for me - not needed in general).
