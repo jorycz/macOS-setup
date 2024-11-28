@@ -1,5 +1,7 @@
+# macOS-setup
+
 * git clone https://github.com/jorycz/macOS-setup.git
-* Clone private repository (only for me - not needed) for setup.
+* Clone private repository (note only for me - not needed in general).
 
 ```
 xcode-select --install
@@ -11,4 +13,8 @@ cd macOS-setup
 ```
 
 * See it in action on YouTube https://youtu.be/1Gs5NAhzs3M
+
+# macOS version
+
+* macOS 15 Sequoia
 
