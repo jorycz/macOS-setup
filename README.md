@@ -15,6 +15,11 @@ cd macOS-setup
 ./afterRebootSetup.sh
 ```
 
+In case you need to run one Apple Script, run:
+```
+./macOS/setupUsingGUI.sh ./macOS/InitialSetup/Finder.scpt
+```
+
 * See it in action on YouTube https://youtu.be/1Gs5NAhzs3M
 
 # macOS version
