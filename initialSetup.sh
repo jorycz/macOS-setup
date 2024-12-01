@@ -38,16 +38,9 @@ then
   echo "HIT Enter to continue ..."
   read
   
-  ### I'm using Secure Keyboard Entry when working in Terminal.
-  ### This must be disabled, otherwise Terminal will not change focus when running Apple Script.
-  if ! osascript ./SecureKeyboardEntry/disableSecureKeyboardEntry.scpt ; then show_error ; fi
-
-  if ! ./InitialSetup/setupUsingGUI.sh s ; then show_error ; fi
-
+  if ! ./macOS/setupUsingGUI.sh ./macOS/InitialSetup ; then show_error ; fi
   sleep 1
-  if ! ./InitialSetup/setupUsingTerminal.sh s ; then show_error ; fi
-
-  osascript ./SecureKeyboardEntry/enableSecureKeyboardEntry.scpt
+  if ! ./macOS/setupUsingTerminal.sh s ; then show_error ; fi
 
 else
   

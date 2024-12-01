@@ -15,15 +15,7 @@ then
   echo " --- After Reboot setup."
   echo ""
 
-  ### I'm using Secure Keyboard Entry when working in Terminal.
-  ### This must be disabled, otherwise Terminal will not change focus when running Apple Script.
-  if ! osascript ./SecureKeyboardEntry/disableSecureKeyboardEntry.scpt ; then show_error ; fi
-
-  if ! ./AfterRebootSetup/setupUsingGUI.sh s ; then show_error ; fi
-
-  sleep 1
-
-  osascript ./SecureKeyboardEntry/enableSecureKeyboardEntry.scpt
+  if ! ./macOS/setupUsingGUI.sh ./macOS/AfterRebootSetup ; then show_error ; fi
 
 else
   
