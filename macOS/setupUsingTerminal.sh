@@ -131,16 +131,16 @@ then
   echo "Mouse - Point & Click - Mission control"
   defaults write com.apple.AppleMultitouchMouse MouseTwoFingerDoubleTapGesture -int 3
 
-  echo "Trackpad - Tap To Click"
-  defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
-  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad.plist Clicking -bool true
-  echo "Trackpad - More Gestures - Mission Control"
-  defaults write com.apple.dock showMissionControlGestureEnabled -bool true
-  echo "Trackpad / Accessibility - Tap & Drag"
-  defaults write com.apple.AppleMultitouchTrackpad Dragging -bool true
-  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad.plist Dragging -bool true
-  defaults write com.apple.AppleMultitouchTrackpad DragLock -bool false
-  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad.plist DragLock -bool false
+  #echo "Trackpad - Tap To Click"
+  #defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+  #defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad.plist Clicking -bool true
+  #echo "Trackpad - More Gestures - Mission Control"
+  #defaults write com.apple.dock showMissionControlGestureEnabled -bool true
+  #echo "Trackpad / Accessibility - Tap & Drag"
+  #defaults write com.apple.AppleMultitouchTrackpad Dragging -bool true
+  #defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad.plist Dragging -bool true
+  #defaults write com.apple.AppleMultitouchTrackpad DragLock -bool false
+  #defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad.plist DragLock -bool false
 
   ##############################
   ###### Non-GUI Settings ######
