@@ -122,14 +122,14 @@ then
   #echo "Users & Groups - Enable fast user switching as Account Name"
   #defaults write ~/Library/Preferences/.GlobalPreferences userMenuExtraStyle -int 1
 
-  echo "Mouse - Point & Click - Secondary click / Two Buttons"
-  defaults write com.apple.AppleMultitouchMouse MouseButtonMode -string "TwoButton"
-  echo "Mouse - Point & Click - Smart zoom"
-  defaults write com.apple.AppleMultitouchMouse MouseOneFingerDoubleTapGesture -int 1
-  echo "Mouse - Point & Click - Swipes ..."
-  defaults write com.apple.AppleMultitouchMouse MouseTwoFingerHorizSwipeGesture -int 2
-  echo "Mouse - Point & Click - Mission control"
-  defaults write com.apple.AppleMultitouchMouse MouseTwoFingerDoubleTapGesture -int 3
+  #echo "Mouse - Point & Click - Secondary click / Two Buttons"
+  #defaults write com.apple.AppleMultitouchMouse MouseButtonMode -string "TwoButton"
+  #echo "Mouse - Point & Click - Smart zoom"
+  #defaults write com.apple.AppleMultitouchMouse MouseOneFingerDoubleTapGesture -int 1
+  #echo "Mouse - Point & Click - Swipes ..."
+  #defaults write com.apple.AppleMultitouchMouse MouseTwoFingerHorizSwipeGesture -int 2
+  #echo "Mouse - Point & Click - Mission control"
+  #defaults write com.apple.AppleMultitouchMouse MouseTwoFingerDoubleTapGesture -int 3
 
   #echo "Trackpad - Tap To Click"
   #defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
