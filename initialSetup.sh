@@ -12,6 +12,8 @@ if [[ $1 =~ ^g ]]
 then
 
   echo ""
+  sw_vers
+  echo ""
   echo " --- Initial setup. Some changes needs root't password ..."
   CU=$(whoami)
   echo "Setting shell for user [ $CU ] - /bin/zsh"
