@@ -20,7 +20,7 @@ In case you need to run one Apple Script, run:
 ./macOS/guiSetup.sh ./macOS/InitialSetup/Finder.scpt
 ```
 
-* See it in action on YouTube https://youtu.be/1Gs5NAhzs3M
+* See it in action on YouTube https://youtu.be/NtREW4gOSgs
 
 # macOS version
 
