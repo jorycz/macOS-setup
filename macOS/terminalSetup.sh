@@ -10,7 +10,7 @@
 
 ### Setup my settings ###
 
-if [[ $1 =~ ^s ]]
+if [[ $1 =~ ^g ]]
 then
   echo && echo "---- Setting macOS in Terminal ... ----" && echo
 
