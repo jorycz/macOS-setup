@@ -43,10 +43,10 @@ In case you need to run one Apple Script, run:
 * Add 4 Spaces if less than 4 Spaces detected
 
 ### Finder
-* // Add NAS to Connect to Server (CMD + K)
+* Add NAS to Connect to Server (CMD + K)
 * View > Show Path Bar
 * View > Show Status Bar
-* // Create Applications floder in home if not exists
+* Create Applications folder in home if not exists
 * Show View Options
   * Show item info : TRUE
   * Show icon preview : TRUE
@@ -106,7 +106,7 @@ In case you need to run one Apple Script, run:
 ### Settings-Keyboard-Dictation
 * Keyboard
   * Dictation : TRUE
-  * Dictation > Languages : // Add Czechia
+  * Dictation > Languages : Add Czechia
 
 ### Settings-Keyboard-InputSources
 * Keyboard
@@ -115,7 +115,7 @@ In case you need to run one Apple Script, run:
   * Capitalize words automatically : FALSE
   * Add period with double-space : FALSE
   * Use smart quotes and dashes : FALSE
-  * // Click on + and add Czech – QWERTY input source ...
+  * Click on + and add Czech – QWERTY input source ...
 
 ### Settings-Keyboard-Shortcuts
 * Keyboard > Keyboard Shortcuts...
