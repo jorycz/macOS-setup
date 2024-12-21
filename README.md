@@ -58,7 +58,7 @@ In case you need to run one Apple Script, run:
 * Settings...
   * Sidebar
     * Recents : FALSE
-	* <HOME FOLDER> : TRUE
+	* HOME FOLDER : TRUE
   * Advanced
     * Show all filename extensions : TRUE
 	* Keep folders on top :
@@ -69,10 +69,10 @@ In case you need to run one Apple Script, run:
     * Show these items on the desktop
       * Hard disks : TRUE
 	  * Connected servers : TRUE
-	* New Finder windows show : <HOME FOLDER>
+	* New Finder windows show : HOME FOLDER
 
 ### Settings-AppleAccount
-* <Apple Account> > iCloud > Drive > Desktop & Documents Folders : TRUE
+* Apple Account > iCloud > Drive > Desktop & Documents Folders : TRUE
 
 ### Settings-AppleIntelligenceAndSiri
 * Apple Intelligence & Siri > Custom shortcut to open AI or Siri (Globe + Space or S)
