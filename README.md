@@ -203,7 +203,7 @@ In case you need to run one Apple Script, run:
 	* Show features for web developers : TRUE
 
 ### X-Run-Last
-* Open Application
+* Open Application (for initial confirmation / sync)
   * Messages
   * Music
   * Calendar
