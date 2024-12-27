@@ -111,28 +111,28 @@ tell application "System Events"
 						key code 36 ### keycode Enter
 						delay 0.6
 						
-						repeat with x in UI elements of tabBar
-							set props to get properties of x
-							#log props
-							#log "........."
-							if class of x is radio button and title of props = "Advanced" then
-								click x
-								delay 0.5
-								exit repeat
-							end if
-						end repeat
+						#repeat with x in UI elements of tabBar
+						#	set props to get properties of x
+						#	#log props
+						#	#log "........."
+						#	if class of x is radio button and title of props = "Advanced" then
+						#		click x
+						#		delay 0.5
+						#		exit repeat
+						#	end if
+						#end repeat
 						
-						repeat with x in UI elements of tabBar
-							set p to get properties of x
-							if class of x is checkbox and title of p = "Set locale environment variables on startup" then
-								tell x
-									if (its value as boolean) then
-										click x
-										delay 0.5
-									end if
-								end tell
-							end if
-						end repeat
+						#repeat with x in UI elements of tabBar
+						#	set p to get properties of x
+						#	if class of x is checkbox and title of p = "Set locale environment variables on startup" then
+						#		tell x
+						#			if (its value as boolean) then
+						#				click x
+						#				delay 0.5
+						#			end if
+						#		end tell
+						#	end if
+						#end repeat
 						
 					end if
 					
