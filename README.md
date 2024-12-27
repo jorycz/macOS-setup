@@ -32,7 +32,13 @@ In case you need to run one Apple Script, run:
 
 * macOS 15 Sequoia
 
-# List of Settings - Apple Script
+# List of Global Settings - using Terminal
+
+* Set ZSH shell as default (should be already)
+* Computer Name
+* Enable Firewall
+
+# List of Settings - using Apple Script
 
 ## InitialSetup
 
@@ -211,3 +217,16 @@ In case you need to run one Apple Script, run:
   * Reminders
   * Photos
 
+# List of Settings - using Terminal
+
+* Finder - Allowing text selection in Quick Look/Preview in Finder by default
+* Finder - Expand the following File Info panes: General, Metadata, Open with, and Sharing & Permissions
+* Dock - Launchpad - show more apps in grid
+* TextEdit - Use plain text mode for new TextEdit documents
+* TextEdit - Open and save files as UTF-8 in TextEdit
+* TextEdit - Set default plain text font and size
+  * Verdana, size 14
+* TextEdit - Set default rich text font and size
+  * Verdana, size 14
+* Global - Expand Save dialogs
+* Global - Do NOT create .DS_Store files on Network or USB volumes
