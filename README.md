@@ -122,8 +122,9 @@ In case you need to run one Apple Script, run:
   * Mission Control
     * Show Notification Center : Control + Space
   * App Shortcuts
-    * All Applications
-      * Zoom : Control + Command + Z
+    * All Applications (Terminal mainly)
+      * Zoom : Control + Option + Z
+			* Return to Default Size : Control + Option + X
 	  * Window Top Left : Option + Control + 1
 	  * Window Top Right : Option + Control + 2
 	  * Window Bottom Left : Option + Control + 3
@@ -131,6 +132,7 @@ In case you need to run one Apple Script, run:
 	  * Return to Default Size : Control + Command + X (for Terminal in Utility)
 	* Safari
 	  * Quit : Control + Option + Q
+		* Duplicate Tab : Control + Option + D
 	* Stickies
 	  * Paste and Match Style : Command + V
 	* Notes
