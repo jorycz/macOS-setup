@@ -15,7 +15,7 @@ then
   echo " --- After Reboot setup."
   echo ""
 
-  if ! ./macOS/guiSetup.sh ./macOS/AfterRebootSetup ; then show_error ; fi
+  if ! ./macOS/guiSetup.sh ./macOS/afterRebootSetup ; then show_error ; fi
 
 else
   

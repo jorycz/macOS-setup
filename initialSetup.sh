@@ -40,7 +40,7 @@ then
   echo "HIT Enter to continue ..."
   read
   
-  if ! ./macOS/guiSetup.sh ./macOS/InitialSetup ; then show_error ; fi
+  if ! ./macOS/guiSetup.sh ./macOS/initialSetup ; then show_error ; fi
   sleep 1
   if ! ./macOS/terminalSetup.sh go ; then show_error ; fi
 

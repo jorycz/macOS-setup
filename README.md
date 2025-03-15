@@ -25,7 +25,7 @@ sudo shutdown -r now
 
 In case you need to run one Apple Script, run:
 ```
-./macOS/guiSetup.sh ./macOS/InitialSetup/Finder.applescript
+./macOS/guiSetup.sh ./macOS/initialSetup/Finder.applescript
 ```
 
 # macOS version
@@ -40,7 +40,7 @@ In case you need to run one Apple Script, run:
 
 # List of Settings - using Apple Script
 
-## InitialSetup
+## initialSetup
 
 ### Desktop
 * Sort By: Date Created
@@ -193,7 +193,7 @@ In case you need to run one Apple Script, run:
 * font name : SF Mono Light
 * font size : 13
 
-## AfterRebootSetup
+## afterRebootSetup
 
 ### Notes
 * Sort notes by : Title

@@ -4,7 +4,7 @@
 
 enableSecureKeyboard() {
   echo
-  osascript ./macOS/SecureKeyboardEntry/enableSecureKeyboardEntry.applescript
+  osascript ./macOS/secureKeyboardEntry/enableSecureKeyboardEntry.applescript
 }
 
 showError() {
@@ -21,7 +21,7 @@ showError() {
 disableSecureKeyboard() {
   ### I'm using Secure Keyboard Entry when working in Terminal.
   ### This must be disabled, otherwise Terminal will not change focus when running Apple Script.
-  if ! osascript ./macOS/SecureKeyboardEntry/disableSecureKeyboardEntry.applescript ; then showError ; fi
+  if ! osascript ./macOS/secureKeyboardEntry/disableSecureKeyboardEntry.applescript ; then showError ; fi
   echo
 }
 
