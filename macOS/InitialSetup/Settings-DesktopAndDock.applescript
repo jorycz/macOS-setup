@@ -1,4 +1,6 @@
-global row_names
+global row_names, shortcutsFound, shortcutsButton, groupNumber
+set shortcutsFound to false
+set groupNumber to 0
 
 (*
 ### This piece of code is to identify all UI elements inside any other (window, group, scroll area, ...)
@@ -81,7 +83,16 @@ tell application "System Events"
 		set s to scroll area 1 of group 1 of group 2 of splitter group 1 of group 1 of window 1
 		
 		repeat with element in UI elements of scroll area 1 of group 1 of group 2 of splitter group 1 of group 1 of window 1
+			
+			if class of element is button then
+				if not shortcutsFound then
+					set shortcutsFound to true
+					set shortcutsButton to element
+				end if
+			end if
+			
 			if class of element is group then
+				#if value of element = "ABC" then
 				repeat with gElement in UI element of element
 					set props to get properties of gElement
 					#log props
@@ -132,7 +143,7 @@ tell application "System Events"
 					if class of gElement is checkbox and name of props = "Ask to keep changes when closing documents" then
 						### Scroll down
 						tell s
-							set value of scroll bar 1 of s to 0.95
+							set value of scroll bar 1 of s to 0.97
 							delay 0.5
 						end tell
 						
@@ -176,6 +187,42 @@ tell application "System Events"
 				end repeat
 			end if
 		end repeat
+		
+		### Middle Mouse button (3) - set Application Expose
+		if shortcutsFound then
+			click shortcutsButton
+			delay 1
+			
+			repeat with x in UI elements of scroll area 1 of group 1 of sheet 1 of window 1
+				if class of x is group then
+					set groupNumber to groupNumber + 1
+				end if
+				
+				if groupNumber = 2 then
+					repeat with element in UI elements of x
+						set props to get properties of element
+						#log props
+						#log "----------------------------"
+						if class of element is pop up button and name of element = "Mouse Shortcut" then
+							click element
+							delay 0.6
+							keystroke "Mouse Button 3"
+							delay 1
+							key code 36
+							delay 1
+							key code 36
+							delay 1
+							set shortcutsFound to false
+							exit repeat
+						end if
+					end repeat
+				end if
+				
+				if not shortcutsFound then
+					exit repeat
+				end if
+			end repeat
+		end if
 		
 	end tell
 end tell

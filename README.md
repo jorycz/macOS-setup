@@ -102,6 +102,8 @@ In case you need to run one Apple Script, run:
   * Ask to keep changes when closing documents : TRUE
   * Automatically rearrange Spaces based on most recent use : FALSE
   * Group windows by application : TRUE
+* Shortcuts...
+  * Set Mouse Button 3 to Application Windows (App Expose)
 
 ### Settings-Energy_Battery
 * Energy (Mac without battery)
@@ -127,6 +129,9 @@ In case you need to run one Apple Script, run:
 * Keyboard > Keyboard Shortcuts...
   * Mission Control
     * Show Notification Center : Control + Space
+    * Disable All shortcuts for switching to Spaces by numbers
+    * Set Control + 1 to move to left Space (Desktop)
+    * Set Control + 2 to move to right Space (Desktop)
   * App Shortcuts
     * All Applications (Terminal mainly)
       * Zoom : Control + Option + Z

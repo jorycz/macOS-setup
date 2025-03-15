@@ -119,10 +119,11 @@ tell application "System Events"
 		
 		### Reset current key combinations to defaults so it can be setup later without actually using key shortcuts instead of setting it
 		set resetButton to button 1 of group 2 of splitter group 1 of group 1 of sheet 1 of window 1
-		### This - using Apple magic - turns on all shortcuts "Switch to Desktop x", which is nice, but not expected. :)
-		delay 0.5
+		### This - using Apple magic - turns on all shortcuts "Switch to Desktop x", which is not expected but you can use it
+		### I am disabling it below one by one
+		delay 0.6
 		click resetButton
-		delay 0.5
+		delay 0.6
 		
 		### Access UI element in rows in right side of Settings sheet
 		# repeat with x in UI element of UI element 1 of row 1 of outline 1 of scroll area 1 of group 1 of scroll area 1 of group 2 of splitter group 1 of group 1 of sheet 1 of window 1
@@ -137,6 +138,7 @@ tell application "System Events"
 					
 					set props to get properties of UI element 2 of y
 					# log value of props
+					# log props
 					
 					### Language & Region - Preferred Languages
 					### If there is English first, it shows "Show Notification Centre", "Control Centre", ...
@@ -150,9 +152,47 @@ tell application "System Events"
 						set shortcut_button to UI element 3 of y
 						tell shortcut_button
 							click shortcut_button
-							delay 0.5
-							# Control + Shift
+							delay 1
+							# Control + Space
 							key code 49 using {control down}
+							delay 1
+						end tell
+					end if
+					
+					# Mission Control with Triangle (value is 0)
+					if role of props = "AXDisclosureTriangle" then
+						# log props
+						set small_arrow to UI element 2 of y
+						tell small_arrow
+							click small_arrow
+							delay 1
+							# Now I need to loop it all again with new rows
+						end tell
+					end if
+					
+				end repeat
+			end if
+		end repeat
+		
+		### Repeat again with all rows disclosured
+		repeat with x in UI element of outline 1 of scroll area 1 of group 1 of scroll area 1 of group 2 of splitter group 1 of group 1 of sheet 1 of window 1
+			set p to get properties of x
+			if role of p = "AXRow" then
+				repeat with y in UI element of x
+					
+					# UI element 1 -- checkbox -- AXCheckBox
+					# UI element 2 -- static text -- AXStaticText
+					# UI element 3 -- button -- AXButton
+					
+					set props to get properties of UI element 2 of y
+					# log value of props
+					# log props
+					
+					# DISABLE ALL Switch to Desktop ...
+					if value of props starts with "Switch to Desktop" then
+						set shortcut_box to UI element 1 of y
+						tell shortcut_box
+							if (its value as boolean) then click shortcut_box
 							delay 1
 						end tell
 					end if
@@ -161,6 +201,56 @@ tell application "System Events"
 			end if
 		end repeat
 		
+		### Repeat again with all rows disclosured and now without switching to another desktop in the middle of settings
+		repeat with x in UI element of outline 1 of scroll area 1 of group 1 of scroll area 1 of group 2 of splitter group 1 of group 1 of sheet 1 of window 1
+			set p to get properties of x
+			if role of p = "AXRow" then
+				repeat with y in UI element of x
+					
+					# UI element 1 -- checkbox -- AXCheckBox
+					# UI element 2 -- static text -- AXStaticText
+					# UI element 3 -- button -- AXButton
+					
+					set props to get properties of UI element 2 of y
+					# log value of props
+					# log props
+					
+					### Move to left Desktop using control + num 1
+					if value of props = "Move left a space" then
+						set shortcut_box to UI element 1 of y
+						tell shortcut_box
+							if not (its value as boolean) then click shortcut_box
+							delay 0.5
+						end tell
+						set shortcut_button to UI element 3 of y
+						tell shortcut_button
+							click shortcut_button
+							delay 1
+							key code 18 using {control down}
+							delay 1
+						end tell
+					end if
+					
+					### Move to right Desktop using control + num 2
+					if value of props = "Move right a space" then
+						set shortcut_box to UI element 1 of y
+						tell shortcut_box
+							if not (its value as boolean) then click shortcut_box
+							delay 0.5
+						end tell
+						set shortcut_button to UI element 3 of y
+						tell shortcut_button
+							click shortcut_button
+							delay 1
+							key code 19 using {control down}
+							delay 1
+						end tell
+					end if
+				end repeat
+			end if
+		end repeat
+		
+						
 		delay 0.5
 		keystroke "App Shortcuts"
 		delay 1
