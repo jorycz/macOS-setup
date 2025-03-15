@@ -74,6 +74,8 @@ open_settings_to("Keyboard")
 # open_settings_to("Trackpad")
 # open_settings_to("Apple Account")
 
+delay 2
+
 tell application "System Events"
 	tell application process "System Settings"
 		
