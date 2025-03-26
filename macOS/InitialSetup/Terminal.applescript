@@ -19,7 +19,8 @@ tell application "Terminal"
 	delay 0.6
 	set font name of settings set "Pro" to "SF Mono Light"
 	delay 0.5
-	set font size of settings set "Pro" to "13"
+	# set font size of settings set "Pro" to "13"
+	set font size of settings set "Pro" to "16"
 	delay 0.5
 end tell
 

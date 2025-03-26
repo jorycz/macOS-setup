@@ -191,7 +191,7 @@ In case you need to run one Apple Script, run:
   * Profiles > Shell > When the shell exits : Close if the shell exited cleanly
   * ~~Profiles > Advanced > Set locale environment variables on startup : FALSE~~
 * font name : SF Mono Light
-* font size : 13
+* font size : 16
 
 ## afterRebootSetup
 
