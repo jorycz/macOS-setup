@@ -17,7 +17,7 @@ end repeat
 set spacesCount to do shell script "defaults read com.apple.spaces | awk '/Spaces =/,/\\);/' | grep ManagedSpaceID | wc -l | tr -d ' '"
 # log spacesCount
 
-if spacesCount > 3 then
+if spacesCount > 2 then
 	log "---> More Spaces available already."
 else
 	do shell script "open -a 'Mission Control'"
@@ -25,8 +25,6 @@ else
 	
 	tell application "System Events"
 		set spaceBar to UI element "Spaces Bar" of UI element 1 of group 1 of process "Dock"
-		click (every button whose value of attribute "AXDescription" is "add desktop") of spaceBar
-		delay 1.5
 		click (every button whose value of attribute "AXDescription" is "add desktop") of spaceBar
 		delay 1.5
 		click (every button whose value of attribute "AXDescription" is "add desktop") of spaceBar
