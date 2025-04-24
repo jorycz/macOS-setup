@@ -46,7 +46,7 @@ In case you need to run one Apple Script, run:
 * Sort By: Date Created
 
 ### Dock-MissionControl
-* Add 4 Spaces if less than 4 Spaces detected
+* Add 3 Spaces if less than 3 Spaces detected
 
 ### Finder
 * Add NAS to Connect to Server (CMD + K)
@@ -129,9 +129,9 @@ In case you need to run one Apple Script, run:
 * Keyboard > Keyboard Shortcuts...
   * Mission Control
     * Show Notification Center : Control + Space
-    * Disable All shortcuts for switching to Spaces by numbers
-    * Set Control + 1 to move to left Space (Desktop)
-    * Set Control + 2 to move to right Space (Desktop)
+    * ~~Disable All shortcuts for switching to Spaces by numbers~~ probably bug
+    * ~~Set Control + 1 to move to left Space (Desktop)~~ probably bug
+    * ~~Set Control + 2 to move to right Space (Desktop)~~ probably bug
   * App Shortcuts
     * All Applications (Terminal mainly)
       * Zoom : Control + Option + Z
