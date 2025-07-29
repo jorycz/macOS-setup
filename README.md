@@ -118,7 +118,7 @@ In case you need to run one Apple Script, run:
 
 ### Settings-Keyboard-InputSources
 * Keyboard
-  * Automatically switch to a document's input source : TRUE
+  * ~~Automatically switch to a document's input source : TRUE~~
   * Correct spelling automatically : FALSE
   * Capitalize words automatically : FALSE
   * Add period with double-space : FALSE

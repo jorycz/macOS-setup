@@ -97,18 +97,18 @@ tell application "System Events"
 		delay 1
 		
 		### Set basics
-		repeat with x in UI element of group 1 of scroll area 1 of group 2 of splitter group 1 of group 1 of sheet 1 of window "Keyboard"
-			set props to get properties of x
-			
-			if name of props starts with "Automatically switch to a document" and role of props = "AXCheckBox" then
-				tell x
-					if not (its value as boolean) then
-						click x
-						delay 0.5
-					end if
-				end tell
-			end if
-		end repeat
+#		repeat with x in UI element of group 1 of scroll area 1 of group 2 of splitter group 1 of group 1 of sheet 1 of window "Keyboard"
+#			set props to get properties of x
+#			
+#			if name of props starts with "Automatically switch to a document" and role of props = "AXCheckBox" then
+#				tell x
+#					if not (its value as boolean) then
+#						click x
+#						delay 0.5
+#					end if
+#				end tell
+#			end if
+#		end repeat
 		
 		repeat with x in UI element of group 2 of scroll area 1 of group 2 of splitter group 1 of group 1 of sheet 1 of window "Keyboard"
 			set props to get properties of x
